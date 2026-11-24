@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+backend/chats.sqlite3
+.venv/
+.DS_Store
+build/
+dist/

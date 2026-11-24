@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#1b1d20" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'"
+    />
+    <title>Simon – TrygIT</title>
+    <link rel="icon" type="image/png" href="/assets/Simon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./renderer.js" defer></script>
+  </head>
+  <body>
+    <dialog class="user-dialog" id="userDialog" aria-labelledby="userNameLabel" aria-describedby="userDialogDescription">
+      <form class="user-form" id="userForm">
+        <p id="userDialogDescription">Hvad hedder du?<br>Dit navn gemmes på denne computer.</p>
+        <label id="userNameLabel" for="userName">Dit navn</label>
+        <input id="userName" name="name" type="text" autocomplete="given-name" maxlength="80" required autofocus />
+        <p id="userError" role="alert"></p>
+        <button class="send-button" id="saveUserButton" type="submit">Gem og fortsæt</button>
+      </form>
+    </dialog>
+    <div class="app-shell">
+      <header class="top-menu">
+        <div class="title-block">
+          <img class="simon-logo" src="/assets/Simon.png" alt="" />
+          <div>
+            <p class="brand-name">Simon</p>
+            <p class="notice" id="notice" role="status">
+              <span class="connection-dot" id="connectionDot" aria-hidden="true"></span>
+              <span id="connectionLabel">Gør klar til at hjælpe</span>
+            </p>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <nav class="menu-actions" aria-label="Samtaler">
+            <button class="new-chat-button" id="newChatButton" type="button">
+              <span aria-hidden="true">＋</span> Ny samtale
+            </button>
+            <details class="saved-chats">
+              <summary aria-controls="historyPanel">
+                <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <span>Historiske Samtaler</span>
+              </summary>
+              <div class="history-panel" id="historyPanel">
+                <!-- Skal det stå 2 gange? -->
+                <!-- <h2>Tidligere samtaler</h2> -->
+                <ul class="conversation-list" id="conversationList" aria-label="Tidligere samtaler" aria-busy="true"></ul>
+                <p id="historyStatus" role="status"></p>
+                <button class="text-button" id="retryChats" type="button" hidden>Prøv igen</button>
+              </div>
+            </details>
+          </nav>
+          <div class="model-picker">
+            <label for="modelSelect">Model</label>
+            <select id="modelSelect" disabled>
+              <option value="">Henter modeller…</option>
+            </select>
+          </div>
+          <button class="text-button theme-toggle" id="themeToggle" type="button">Lyst tema</button>
+        </div>
+      </header>
+      <main class="workspace">
+        <section class="conversation" id="conversation" aria-label="Samtale">
+          <div class="welcome" id="welcome">
+            <div class="welcome-intro">
+              <h1 class="welcome-title">Hvad har du brug for hjælp til?</h1>
+            </div>
+            <div class="skill-grid" id="skillGrid" aria-label="Vælg hvad du har brug for hjælp til" aria-busy="true"></div>
+          </div>
+          <div class="chat-heading" id="chatHeading" hidden>
+            <h2 class="chat-title" id="skillTitle"></h2>
+            <button class="text-button" id="startOver" type="button">← Til forsiden</button>
+          </div>
+          <div class="messages" id="messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
+        </section>
+
+        <footer class="composer-area">
+          <label class="composer-label" for="promptInput">Din besked til Simon</label>
+          <form class="composer" id="chatForm">
+            <textarea id="promptInput" rows="1" placeholder="Skriv en besked…" aria-label="Din besked" maxlength="4000" disabled></textarea>
+            <button class="send-button" id="sendButton" type="submit" aria-label="Send besked" disabled>
+              Send besked
+            </button>
+          </form>
+          <div class="composer-meta">
+            <span>Del aldrig adgangskoder eller pinkoder.</span>
+            <span>Kontakt TrygIT, hvis du er i tvivl.</span>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

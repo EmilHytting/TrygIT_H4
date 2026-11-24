@@ -1,0 +1,9 @@
+Package: trygit-simon
+Version: 0.1.0
+Section: utils
+Priority: optional
+Architecture: @ARCH@
+Maintainer: TrygIT
+Depends: libgtk-3-0t64 | libgtk-3-0, libwebkit2gtk-4.1-0, gir1.2-gtk-3.0, gir1.2-webkit2-4.1
+Description: Lokal IT-supportassistent fra TrygIT
+ Simon er en lokal chatassistent, som bruger Ollama til IT-support.

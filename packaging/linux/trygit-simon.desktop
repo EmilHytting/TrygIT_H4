@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Simon - TrygIT
+Comment=Lokal IT-supportassistent
+Exec=trygit-simon
+Icon=trygit-simon
+Terminal=false
+Categories=Utility;
